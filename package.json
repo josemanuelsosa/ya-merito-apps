@@ -1,0 +1,46 @@
+{
+  "name": "ya-merito",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Ya Merito: tarjetas de sellos para Apple Wallet y Google Wallet (SaaS multi-negocio)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/core/*.test.ts src/server/integrations/billing/*.test.ts",
+    "seed": "node --env-file=.env.local scripts/seed.mjs",
+    "seed:demo": "node --env-file=.env.local scripts/seed.mjs --demo",
+    "certs:base64": "node scripts/certs-a-base64.mjs"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
+    "google-auth-library": "^10.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^1.20.0",
+    "next": "^16.4.2",
+    "passkit-generator": "^3.7.0",
+    "qr-scanner": "^1.4.2",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.20.0",
+    "typescript": "^5"
+  }
+}

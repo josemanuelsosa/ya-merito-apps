@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ─── Ya Merito · sistema visual "luminoso" ───────────────────────────
+   Papel blanco, tinta índigo y un solo acento: el cempasúchil del sello.
+   Los grises tiran a índigo (fríos) para que el naranja sea el único calor.
+   Display: Bricolage Grotesque · Interfaz: Instrument Sans
+   ─────────────────────────────────────────────────────────────────── */
+@theme {
+  --color-paper: #ffffff;
+  --color-ink: #17152b;
+  --color-ink-2: #5d5a72;
+  --color-ink-3: #8e8ba3;
+  --color-mist: #f4f3f7;
+  --color-mist-2: #ebe9f1;
+  --color-line: #e7e5ee;
+  --color-cempa: #ff7a12;
+  --color-cempa-hover: #ff8a2e;
+  --color-cempa-ink: #c2530a;
+  --color-cempa-wash: #fff0e3;
+  --color-agave: #0e8a5f;
+  --color-agave-wash: #e3f5ec;
+  --color-chile: #d63a2f;
+  --color-chile-wash: #fdeceb;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-pass: 18px;
+  --shadow-pass: 0 1px 0 rgb(23 21 43 / 0.04), 0 18px 40px -20px rgb(23 21 43 / 0.45);
+  --shadow-float: 0 12px 32px -12px rgb(23 21 43 / 0.28);
+
+  --animate-stamp: stamp 420ms cubic-bezier(0.2, 0.9, 0.3, 1.35) both;
+  --animate-rise: rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes stamp {
+  0% { transform: scale(1.35) rotate(-14deg); opacity: 0; }
+  55% { transform: scale(0.94) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes rise {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes ink-ring {
+  from { transform: scale(0.6); opacity: 0.55; }
+  to { transform: scale(1.6); opacity: 0; }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01";
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--color-cempa) 70%, white);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-cempa-wash);
+}
+
+/* Números que se alinean (contadores, reportes) */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Anillo de tinta que sale del botón de sello */
+.ink-ring {
+  animation: ink-ring 600ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+}

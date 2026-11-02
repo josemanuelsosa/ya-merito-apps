@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+.env*.local
+.env
+*.pem
+*.p12
+*.cer
+*.p8
+certs/
+.vercel
+next-env.d.ts
+*.tsbuildinfo
